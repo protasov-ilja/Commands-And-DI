@@ -9,7 +9,7 @@ namespace Assets.Scripts
 
 		public GameState GameState { get; set; }
 
-		public void Load()
+		public virtual void Load()
 		{
 			Debug.Log("Runing");
 			if (!File.Exists(GameStatePath))

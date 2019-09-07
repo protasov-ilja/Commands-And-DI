@@ -4,9 +4,9 @@ namespace Assets.Scripts
 {
 	public class GameStateCommandExecutor : IGameStateCommandsExecutor
 	{
-		private readonly IGameStateManager _gameStateManager;
+		protected readonly IGameStateManager _gameStateManager;
 
-		private Action<GameState> _StateUpdated;
+		protected Action<GameState> _StateUpdated;
 
 		public event Action<GameState> StateUpdated
 		{
@@ -27,7 +27,7 @@ namespace Assets.Scripts
 			_gameStateManager = gameStateManger;
 		}
 
-		public void Execute(IGameStateCommand command)
+		public virtual void Execute(IGameStateCommand command)
 		{
 			command.Execute(_gameStateManager.GameState);
 			_StateUpdated?.Invoke(_gameStateManager.GameState);
